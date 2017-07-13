@@ -74,15 +74,10 @@ def analyzeText(line):
                 return
 
 def printText(point):
-    if point == 9:
-        for i in range(0, 8):
-            print("{}".format(poemText[point][i]))
-    elif (point == 4) or (point == 5):
-        for i in range(0, 4):
-            print("{}".format(poemText[point][i]))
-    else:
-        for i in range(0, 2):
-            print("{}".format(poemText[point][i]))
+    i = 0
+    while(poemText[point][i] != 0):
+        print("{}".format(poemText[point][i]))
+        i += 1
 
 
 def lookAround():
@@ -126,9 +121,11 @@ while(True):
     result = input()
     if result == '1':
         lookAround()
+        print("")
         print("接下来你希望：")
     elif result == '2':
         recite()
+        print("")
         print("接下来干点儿啥：")
     elif result == '3':
         print("再见！")
