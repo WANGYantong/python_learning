@@ -1,4 +1,5 @@
 import random
+import os
 
 path = "C://Users/Thinker/Documents/Projects/python/python_learning/poem/古诗.txt"
 
@@ -121,11 +122,13 @@ while(True):
     result = input()
     if result == '1':
         lookAround()
-        print("")
+        input()
+        os.system('cls')
         print("接下来你希望：")
     elif result == '2':
         recite()
-        print("")
+        input()
+        os.system('cls')
         print("接下来干点儿啥：")
     elif result == '3':
         print("再见！")
