@@ -1,7 +1,11 @@
 import random
+import platform
 import os
 
-path = "C://Users/Thinker/Documents/Projects/python/python_learning/poem/古诗.txt"
+if platform.platform().startswith("Windows"):
+    path = "C://Users/Thinker/Documents/Projects/python/python_learning/poem/古诗.txt"
+else:
+    path = "/home/thinker/PycharmProjects/python_learning/poem/古诗.txt"
 
 poemTitle = [0 for x in range(10)]
 poemDynasty = [0 for x in range(10)]
@@ -92,18 +96,18 @@ def recite():
     point = random.randrange(0, 10)
     mode = random.randrange(1, 3)
     if mode == 1:
-        print("根据题目，说出朝代、作者和诗词内容：")
+        print("根据题目，说出朝代、作者和诗词内容：\n")
         print("【{}】".format(poemTitle[point]))
-        print("敲击任意键显示答案")
+        print("\n敲击任意键显示答案")
         input()
         print("【{}】 （{}） {} ".format(poemTitle[point], poemDynasty[point], \
                                      poemAuthor[point]))
         printText(point)
     else:
-        print("请说出下面这首诗的题目、朝代和作者：")
+        print("请说出下面这首诗的题目、朝代和作者：\n")
         printText(point)
+        print("\n敲击任意键显示答案")
         input()
-        print("敲击任意键显示答案")
         print("【{}】 （{}） {} ".format(poemTitle[point], poemDynasty[point], \
                                      poemAuthor[point]))
 
@@ -111,6 +115,14 @@ with open(path, encoding="UTF-8") as text:
     for line in text:
         line = line.rstrip().lstrip()
         analyzeText(line)
+
+
+def clear_screen():
+    if platform.platform().startswith("Windows"):
+        os.system('cls')
+    else:
+        os.system('clear')
+
 
 print("***********************")
 print("欢迎来到诗词荣耀！")
@@ -123,12 +135,12 @@ while(True):
     if result == '1':
         lookAround()
         input()
-        os.system('cls')
+        clear_screen()
         print("接下来你希望：")
     elif result == '2':
         recite()
         input()
-        os.system('cls')
+        clear_screen()
         print("接下来干点儿啥：")
     elif result == '3':
         print("再见！")
